@@ -75,7 +75,10 @@ public class PlayerController : MonoBehaviour
                     Instantiate(hitMarker, hit.point, transform.rotation);
                     Debug.Log("Hit!");
                     gunAnim.SetTrigger("isFire");
-                    hitCounter++;
+                    if(hit.collider.gameObject.tag == "Alien")
+                    {
+                        hitCounter++;
+                    }
                 }
             }
         }
