@@ -39,7 +39,6 @@ public class PlayerController : MonoBehaviour
         Move();
         Mouse();
         Shoot();
-        AnimateGun();
     }
 
     public void Move()
@@ -63,7 +62,7 @@ public class PlayerController : MonoBehaviour
 
     public void Shoot()
     {
-        if(currentAmmo >= 0)
+        if(currentAmmo >= 1)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -74,15 +73,17 @@ public class PlayerController : MonoBehaviour
                 {
                     Instantiate(hitMarker, hit.point, transform.rotation);
                     Debug.Log("Hit!");
+                    gunAnim.SetTrigger("isFire");
                 }
             }
         }
-    }
-    public void AnimateGun()
-    {
-        if (Input.GetMouseButtonDown(0) && currentAmmo >= 0)
+
+        if(currentAmmo <= 0)
         {
-            gunAnim.SetTrigger("isFire");
+            if (Input.GetMouseButtonDown(0))
+            {
+                gunAnim.SetTrigger("isOut");
+            }
         }
     }
 }
