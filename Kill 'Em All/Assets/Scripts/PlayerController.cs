@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public Animator gunAnim;
 
     public static int currentAmmo = 6;
+    public static int hitCounter = 0;
 
     void Awake()
     {
@@ -74,6 +75,7 @@ public class PlayerController : MonoBehaviour
                     Instantiate(hitMarker, hit.point, transform.rotation);
                     Debug.Log("Hit!");
                     gunAnim.SetTrigger("isFire");
+                    hitCounter++;
                 }
             }
         }
