@@ -10,6 +10,12 @@ public class AlienController : MonoBehaviour
     public float floatStrength;
     public Animator anim;
     private int hcInstance = 0;
+
+    public GameObject fireBall;
+    public Rigidbody2D fireRG;
+    public float moveSpeedFire = 5f;
+    public GameObject thePlayer;
+    public float fireDistance = 10f;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +41,13 @@ public class AlienController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void Chase()
+    {
+        float distanceToPlayer = Vector2.Distance(transform.position, thePlayer.transform.position);
+        Vector3 spawnPoint = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+        fireRG.velocity = transform.forward * Time.deltaTime * moveSpeedFire;
     }
 
 }
