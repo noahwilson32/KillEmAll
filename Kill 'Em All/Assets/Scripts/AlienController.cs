@@ -16,6 +16,7 @@ public class AlienController : MonoBehaviour
     public float moveSpeedFire = 5f;
     public GameObject thePlayer;
     public float fireDistance = 10f;
+    public static int numFire = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,7 @@ public class AlienController : MonoBehaviour
     {
         transform.position = new Vector3(transform.position.x, transform.position.y, originalZ + (Mathf.Sin(Time.time) * floatStrength));
         Flash(hcInstance);
+        Chase();
     }
     public void Flash(int hc)
     {
@@ -47,7 +49,15 @@ public class AlienController : MonoBehaviour
     {
         float distanceToPlayer = Vector2.Distance(transform.position, thePlayer.transform.position);
         Vector3 spawnPoint = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
-        fireRG.velocity = transform.forward * Time.deltaTime * moveSpeedFire;
+        if(distanceToPlayer <= fireDistance)
+        {
+            if(numFire <= 0)
+            {
+                Instantiate(fireBall, spawnPoint, Quaternion.identity);
+                numFire++;
+            }
+        }
+        fireRG.velocity = transform.forward * moveSpeedFire;
     }
 
 }
