@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class DamagePlayer : MonoBehaviour
 {
-    public GameObject screenFlash;
-    public float waitTime = .1f;
     // Start is called before the first frame update
     void Start()
     {
