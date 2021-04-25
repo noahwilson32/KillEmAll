@@ -12,11 +12,13 @@ public class AlienController : MonoBehaviour
     private int hcInstance = 0;
 
     public GameObject fireBall;
-    public Rigidbody2D fireRG;
-    public float moveSpeedFire = 5f;
     public GameObject thePlayer;
     public float fireDistance = 10f;
     public static int numFire = 0;
+
+
+    float timer;
+    public float waitTime = 2f;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,17 +49,16 @@ public class AlienController : MonoBehaviour
 
     public void Chase()
     {
+        timer += Time.deltaTime;
         float distanceToPlayer = Vector2.Distance(transform.position, thePlayer.transform.position);
-        Vector3 spawnPoint = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
         if(distanceToPlayer <= fireDistance)
         {
-            if(numFire <= 0)
+            if(timer > waitTime)
             {
-                Instantiate(fireBall, spawnPoint, Quaternion.identity);
-                numFire++;
+                Instantiate(fireBall, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                timer = 0;
             }
         }
-        fireRG.velocity = transform.forward * moveSpeedFire;
     }
 
 }

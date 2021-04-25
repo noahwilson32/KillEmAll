@@ -23,6 +23,10 @@ public class PlayerController : MonoBehaviour
 
     public static int currentAmmo = 6;
     public static int hitCounter = 0;
+    public static int healthCounter = 100;
+
+    public GameObject screenFlash;
+    public float waitTime = .1f;
 
     void Awake()
     {
@@ -32,6 +36,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         Cursor.visible = false;
+        screenFlash.SetActive(false);
     }
 
     // Update is called once per frame
@@ -40,6 +45,10 @@ public class PlayerController : MonoBehaviour
         Move();
         Mouse();
         Shoot();
+        if(healthCounter <= 0)
+        {
+            healthCounter = 0;
+        }
     }
 
     public void Move()
@@ -89,6 +98,19 @@ public class PlayerController : MonoBehaviour
             {
                 gunAnim.SetTrigger("isOut");
             }
+        }
+    }
+    IEnumerator FlashScreen()
+    {
+        screenFlash.SetActive(true);
+        yield return new WaitForSeconds(waitTime);
+        screenFlash.SetActive(false);
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "FireBall")
+        {
+            StartCoroutine(FlashScreen());
         }
     }
 }
