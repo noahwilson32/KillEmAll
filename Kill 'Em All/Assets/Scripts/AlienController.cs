@@ -57,6 +57,7 @@ public class AlienController : MonoBehaviour
             {
                 if(PlayerController.healthCounter > 0)
                 {
+                    anim.SetTrigger("isShooting");
                     Instantiate(fireBall, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
                     timer = 0;
                 }

@@ -12,10 +12,11 @@ public class UIHandler : MonoBehaviour
     public Animator bloodAnim;
 
     public GameObject deathScreen;
+    public GameObject pauseScreen;
     // Start is called before the first frame update
     void Start()
     {
-
+        pauseScreen.SetActive(false);
     }
 
     // Update is called once per frame
@@ -23,6 +24,10 @@ public class UIHandler : MonoBehaviour
     {
         UpdateAmmoText();
         Blood();
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Pause();
+        }
     }
 
     public void UpdateAmmoText()
@@ -51,5 +56,19 @@ public class UIHandler : MonoBehaviour
         SceneManager.LoadScene("SampleScene");
         PlayerController.healthCounter = 100;
         PlayerController.currentAmmo = 6;
+    }
+    public void Pause()
+    {
+
+        Time.timeScale = 0;
+        pauseScreen.SetActive(true);
+        Cursor.visible = true;
+
+    }
+    public void Resume()
+    {
+        Time.timeScale = 1;
+        pauseScreen.SetActive(false);
+        Cursor.visible = false;
     }
 }
