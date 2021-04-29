@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
     public GameObject screenFlash;
     public float waitTime = .1f;
 
+    private int healthInstance = 100;
+
     void Awake()
     {
         instance = this;
@@ -50,6 +52,8 @@ public class PlayerController : MonoBehaviour
         {
             healthCounter = 0;
         }
+        TakeDamageFlash(healthInstance);
+        
     }
 
     public void Move()
@@ -110,11 +114,13 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         screenFlash.SetActive(false);
     }
-    private void OnTriggerEnter2D(Collider2D other)
+    public void TakeDamageFlash(int hc)
     {
-        if(other.tag == "FireBall")
+        if(hc > healthCounter)
         {
             StartCoroutine(FlashScreen());
+            healthInstance -= 25;
         }
     }
+
 }

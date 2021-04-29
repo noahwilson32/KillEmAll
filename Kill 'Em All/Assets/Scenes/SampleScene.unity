@@ -383,6 +383,8 @@ MonoBehaviour:
   rg: {fileID: 335695401}
   moveSpeed: 2
   anim: {fileID: 1758194103}
+  explosion: {fileID: 3893646581929259493, guid: bf52b18c4ea1ecb4480c5fc092b49c42,
+    type: 3}
 --- !u!50 &335695401
 Rigidbody2D:
   serializedVersion: 4
