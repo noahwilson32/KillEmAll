@@ -96,6 +96,10 @@ public class PlayerController : MonoBehaviour
                     {
                         hitCounter++;
                     }
+                    if(hit.collider.gameObject.tag == "Boom")
+                    {
+                        BoomController.timesHit++;
+                    }
                 }
             }
         }

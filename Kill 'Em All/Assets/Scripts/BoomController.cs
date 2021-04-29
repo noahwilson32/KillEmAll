@@ -10,6 +10,8 @@ public class BoomController : MonoBehaviour
     private Vector3 direction;
     public Animator anim;
     public GameObject explosion;
+
+    public static int timesHit = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +21,6 @@ public class BoomController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int explosionCount = 0;
         direction = PlayerController.instance.transform.position - transform.position;
         direction.Normalize();
         direction *= moveSpeed;
@@ -34,7 +35,6 @@ public class BoomController : MonoBehaviour
             rg.velocity = new Vector2(0,0);
             anim.SetBool("isWalking", false);
             Destroy(gameObject);
-            if(explosionCount <= 0) { }
             GameObject explosionInstance = Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(explosionInstance, .5f);
             PlayerController.healthCounter -= 25;
@@ -43,6 +43,12 @@ public class BoomController : MonoBehaviour
         {
             rg.velocity = new Vector2(0, 0);
             anim.SetBool("isWalking", false);
+        }
+        if(timesHit >= 1)
+        {
+            Destroy(gameObject);
+            GameObject explosionInstance = Instantiate(explosion, transform.position, Quaternion.identity);
+            Destroy(explosionInstance, .5f);
         }
     }
 }
