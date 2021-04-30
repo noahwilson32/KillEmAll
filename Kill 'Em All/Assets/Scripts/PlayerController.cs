@@ -23,13 +23,15 @@ public class PlayerController : MonoBehaviour
     public Animator gunAnim;
 
     public static int currentAmmo = 6;
-    public static int hitCounter = 0;
+    public static int AlienHitCounter = 0;
     public static int healthCounter = 100;
 
     public GameObject screenFlash;
     public float waitTime = .1f;
 
     private int healthInstance = 100;
+
+    public GameObject explosion;
 
     void Awake()
     {
@@ -94,11 +96,13 @@ public class PlayerController : MonoBehaviour
                     gunAnim.SetTrigger("isFire");
                     if(hit.collider.gameObject.tag == "Alien")
                     {
-                        hitCounter++;
+                        AlienHitCounter++;
                     }
                     if(hit.collider.gameObject.tag == "Boom")
                     {
-                        BoomController.timesHit++;
+                        GameObject explosionInstance = Instantiate(explosion,hit.collider.gameObject.transform.position,Quaternion.identity);
+                        Destroy(hit.collider.gameObject);
+                        Destroy(explosionInstance, .5f);
                     }
                 }
             }

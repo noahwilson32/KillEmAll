@@ -35,13 +35,13 @@ public class AlienController : MonoBehaviour
     }
     public void Flash(int hc)
     {
-        if(PlayerController.hitCounter > hc)
+        if(PlayerController.AlienHitCounter > hc)
         {
             anim.SetTrigger("isFlash");
             hcInstance++;
         }
 
-        if(PlayerController.hitCounter == 3)
+        if(PlayerController.AlienHitCounter == 3)
         {
             Destroy(gameObject);
         }
