@@ -8,10 +8,10 @@ public class BoomController : MonoBehaviour
     public float moveSpeed;
 
     private Vector3 direction;
-    public Animator anim;
 
     public GameObject explosion;
 
+    public static bool isWalking = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +28,7 @@ public class BoomController : MonoBehaviour
         if(distance > 1f && distance <= 10f)
         {
             rg.velocity = direction * moveSpeed;
-            anim.SetBool("isWalking", true);
+            isWalking = true;
         }
         if(distance <= 1f)
         {
@@ -41,7 +41,7 @@ public class BoomController : MonoBehaviour
         if(distance > 10f)
         {
             rg.velocity = new Vector2(0, 0);
-            anim.SetBool("isWalking", false);
+            isWalking = false;
         }
     }
 }

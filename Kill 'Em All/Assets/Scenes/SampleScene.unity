@@ -330,8 +330,6 @@ GameObject:
   - component: {fileID: 335695401}
   - component: {fileID: 335695400}
   - component: {fileID: 335695402}
-  - component: {fileID: 335695399}
-  - component: {fileID: 335695403}
   m_Layer: 0
   m_Name: BoomAlien
   m_TagString: Boom
@@ -370,25 +368,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &335695399
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 335695396}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3e9324b4b78d08b49a4588c66874b4fc, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &335695400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,7 +382,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rg: {fileID: 335695401}
   moveSpeed: 2
-  anim: {fileID: 335695399}
   explosion: {fileID: 3893646581929259493, guid: bf52b18c4ea1ecb4480c5fc092b49c42,
     type: 3}
 --- !u!50 &335695401
@@ -477,19 +455,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &335695403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 335695396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98c9b1faa4f991d4eb619f7e0f972619, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sr: {fileID: 1758194102}
 --- !u!1 &390422178
 GameObject:
   m_ObjectHideFlags: 0
@@ -1920,6 +1885,7 @@ GameObject:
   - component: {fileID: 1758194102}
   - component: {fileID: 1758194101}
   - component: {fileID: 1758194100}
+  - component: {fileID: 1758194103}
   m_Layer: 0
   m_Name: BoomSprite
   m_TagString: Boom
@@ -2018,6 +1984,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1758194103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758194098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1f282ab07561b641abcfd6c5e5724e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  theSR: {fileID: 1758194102}
+  spriteIdle: {fileID: -8435428614521773897, guid: 3b3edfdda7774b14fa08a09322ed28c7,
+    type: 3}
+  spriteWalk: {fileID: -7899362462636988378, guid: 3b3edfdda7774b14fa08a09322ed28c7,
+    type: 3}
 --- !u!1 &1819025830
 GameObject:
   m_ObjectHideFlags: 0

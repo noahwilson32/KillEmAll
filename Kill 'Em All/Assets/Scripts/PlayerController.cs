@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
                     if(hit.collider.gameObject.tag == "Boom")
                     {
                         GameObject explosionInstance = Instantiate(explosion,hit.collider.gameObject.transform.position,Quaternion.identity);
-                        Destroy(hit.collider.gameObject);
+                        Destroy(hit.collider.transform.parent.gameObject);
                         Destroy(explosionInstance, .5f);
                     }
                 }
