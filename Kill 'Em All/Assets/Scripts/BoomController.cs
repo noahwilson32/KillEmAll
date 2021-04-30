@@ -9,9 +9,11 @@ public class BoomController : MonoBehaviour
 
     private Vector3 direction;
 
+    public Animator anim;
+
     public GameObject explosion;
 
-    public static bool isWalking = false;
+    public bool isWalking = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,5 +45,6 @@ public class BoomController : MonoBehaviour
             rg.velocity = new Vector2(0, 0);
             isWalking = false;
         }
+        anim.SetBool("isWalking", isWalking);
     }
 }
