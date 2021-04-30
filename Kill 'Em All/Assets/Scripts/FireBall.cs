@@ -25,4 +25,11 @@ public class FireBall : MonoBehaviour
     {
         rg.velocity = direction * moveSpeed;
     }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "wall")
+        {
+            Destroy(gameObject);
+        }
+    }
 }
